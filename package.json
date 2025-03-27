@@ -2,22 +2,59 @@
   "name": "project-x",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
+    "customdev": "node server.js",
+    "testConnection": "node testConnection.js",
+    "testEnv": "node testEnv.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "scrape": "node rssScheduler.js"
   },
   "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.475.0",
+    "module-alias": "^2.2.3",
+    "moment-timezone": "^0.5.47",
+    "mongoose": "^8.10.0",
+    "next": "^15.1.6",
+    "next-auth": "^4.24.11",
+    "node-cron": "^3.0.3",
+    "p-limit": "^6.2.0",
+    "puppeteer-core": "^24.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.1.6"
+    "react-icons": "^5.5.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.2.0",
+    "rss-parser": "^3.13.0"
   },
   "devDependencies": {
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "@eslint/eslintrc": "^3",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
-    "@eslint/eslintrc": "^3"
-  }
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17"
+  },
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
