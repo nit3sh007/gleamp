@@ -1,36 +1,3 @@
-
-// import cron from "node-cron";
-// import dotenv from "dotenv";
-// import { newsSources } from "./src/config/newsSources.js";
-// import { connectDB } from "./src/lib/db.js"; // Correct relative path
-
-// import { fetchNewsFromRSS } from "./src/services/rssFetcher.js"; // Fix import
-
-// dotenv.config();
-
-// console.log("📌 rssScheduler.js is starting...");
-
-// // Ensure DB is connected before scraping
-// await connectDB();
-
-// // Schedule scraping every 5 minutes
-// cron.schedule("*/5 * * * *", async () => {
-//   console.log("⏳ Scheduled task triggered at", new Date().toLocaleTimeString());
-
-//   try {
-//     for (const { countryCode, countryName, sources } of newsSources) {
-//       for (const source of sources) {
-//         await fetchNewsFromRSS(source.rss, countryCode, countryName, source.name);
-//       }
-//     }
-//   } catch (error) {
-//     console.error("❌ Error during scheduled scraping:", error);
-//   }
-// });
-
-// console.log("✅ Scraper scheduler started.");
-
-
 import cron from "node-cron";
 import dotenv from "dotenv";
 import { newsSources } from "./src/config/newsSources.js";

@@ -4,14 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "customdev": "node server.js",
-    "testConnection": "node testConnection.js",
-    "testEnv": "node testEnv.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "scrape": "node rssScheduler.js"
+    "scrape": "node rssScheduler.js",
+    "dev:full": "concurrently \"next dev\" \"node rssScheduler.js\""
   },
   "dependencies": {
     "axios": "^1.7.9",
@@ -38,6 +36,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8.5.2",
