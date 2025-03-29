@@ -43,11 +43,9 @@
 // runNewsScraping();
 
 // // Schedule scraping every hour (adjust as needed)
-// cron.schedule("0 * * * *", runNewsScraping);
+// cron.schedule("*/5 * * * *", runNewsScraping);
 
 // console.log("✅ Scraper scheduler started. Will run hourly.");
-
-
 
 
 
@@ -93,4 +91,3 @@ export async function runNewsScraping() {
 runNewsScraping();
 cron.schedule("*/1 * * * *", runNewsScraping);
 console.log("✅ Scraper scheduler started. Will run hourly.");
-
