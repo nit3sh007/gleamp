@@ -1,9 +1,9 @@
-// pages/api/cron.js or app/api/cron/route.js (depending on your Next.js version)
-import { newsSources } from "../../src/config/newsSources";
-import { connectDB } from "../../src/lib/db";
-import { fetchNewsFromRSS } from "../../src/services/rssFetcher";
+import { NextResponse } from "next/server";
+import { fetchNewsFromRSS } from "@/services/rssFetcher";
+import { newsSources } from "@/config/newsSources";
+import { connectDB } from "@/lib/db";
 
-export default async function handler(req, res) {
+export async function GET(request) {
   try {
     console.log("⏳ Cron job triggered at", new Date().toLocaleTimeString());
     await connectDB();
@@ -22,9 +22,15 @@ export default async function handler(req, res) {
       }
     }
     
-    res.status(200).json({ success: true });
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
   } catch (error) {
     console.error("❌ Error:", error);
-    res.status(500).json({ error: "Failed to scrape news" });
+    return new Response(JSON.stringify({ error: "Failed to scrape news" }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 }
