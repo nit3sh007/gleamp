@@ -1,32 +1,30 @@
-import { NextResponse } from "next/server";
-import { fetchNewsFromRSS } from "@/services/rssFetcher";
-import { newsSources } from "@/config/newsSources";
+// pages/api/cron.js or app/api/cron/route.js (depending on your Next.js version)
+import { newsSources } from "../../src/config/newsSources";
+import { connectDB } from "../../src/lib/db";
+import { fetchNewsFromRSS } from "../../src/services/rssFetcher";
 
-export async function GET() {
+export default async function handler(req, res) {
   try {
-    console.log("🚀 Vercel Cron Job: Starting RSS Scraping...");
-
+    console.log("⏳ Cron job triggered at", new Date().toLocaleTimeString());
+    await connectDB();
+    
     for (const country of newsSources) {
-      console.log(`🌍 Country: ${country.countryName}`);
       for (const source of country.sources) {
-        console.log(`🔎 Source: ${source.name}`);
-        for (const categoryItem of source.categories) {
-          console.log(`📰 Category: ${categoryItem.name}`);
+        for (const category of source.categories) {
           await fetchNewsFromRSS(
-            categoryItem.rss,
+            category.rss,
             country.countryCode,
             country.countryName,
             source.name,
-            categoryItem.name
+            category.name
           );
         }
       }
     }
-
-    console.log("✅ Scraping completed successfully!");
-    return NextResponse.json({ message: "Scraping completed successfully!" });
+    
+    res.status(200).json({ success: true });
   } catch (error) {
-    console.error("❌ Error during scraping:", error);
-    return NextResponse.json({ error: "Error during scraping" }, { status: 500 });
+    console.error("❌ Error:", error);
+    res.status(500).json({ error: "Failed to scrape news" });
   }
 }
