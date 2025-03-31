@@ -1,3 +1,4 @@
+// Create this file: src/app/api/cron/route.js
 import { NextResponse } from "next/server";
 import { fetchNewsFromRSS } from "@/services/rssFetcher";
 import { newsSources } from "@/config/newsSources";
