@@ -71,7 +71,8 @@ import { fetchNewsFromRSS } from "@/services/rssFetcher";
 import { newsSources } from "@/config/newsSources";
 import { connectDB } from "@/lib/db";
 
-export default async function handler(req, res) {
+
+export async function GET(request) {
   console.log("⏳ Cron job API triggered at", new Date().toISOString());
   
   try {
@@ -118,13 +119,13 @@ export default async function handler(req, res) {
     };
     
     console.log("📊 Scraping Summary:", summary);
-    return res.status(200).json(summary);
+    return NextResponse.json(summary);
   } catch (error) {
     console.error("❌ Critical error in cron job:", error);
-    return res.status(500).json({ 
+    return NextResponse.json({ 
       error: "Failed to scrape news", 
       message: error.message,
       timestamp: new Date().toISOString()
-    });
+    }, { status: 500 });
   }
 }
