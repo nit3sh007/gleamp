@@ -24,6 +24,30 @@
 // };
 
 
+// import mongoose from 'mongoose';
+
+// export const connectDB = async () => {
+//   try {
+//     const dbURI = process.env.MONGO_URI;
+//     if (!dbURI) {
+//       throw new Error("MONGO_URI is not defined in .env");
+//     }
+
+//     await mongoose.connect(dbURI, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//       socketTimeoutMS: 60000,
+//       serverSelectionTimeoutMS: 30000,
+//     });
+
+//     console.log("✅ MongoDB Atlas Connected Successfully");
+//   } catch (error) {
+//     console.error("❌ MongoDB Connection Error:", error.message);
+//     console.error("🔎 Error Stack:", error.stack);
+//     throw error; // Ensure it propagates the error to Vercel logs
+//   }
+// };
+
 import mongoose from 'mongoose';
 
 export const connectDB = async () => {
@@ -33,12 +57,7 @@ export const connectDB = async () => {
       throw new Error("MONGO_URI is not defined in .env");
     }
 
-    await mongoose.connect(dbURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      socketTimeoutMS: 60000,
-      serverSelectionTimeoutMS: 30000,
-    });
+    await mongoose.connect(dbURI);
 
     console.log("✅ MongoDB Atlas Connected Successfully");
   } catch (error) {
@@ -47,3 +66,4 @@ export const connectDB = async () => {
     throw error; // Ensure it propagates the error to Vercel logs
   }
 };
+
