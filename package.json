@@ -8,8 +8,8 @@
     "customdev": "node server.js",
     "build": "next build",
     "start": "next start",
-    "scrape": "node scraper.js"
-    "dev:full": "concurrently \"next dev\" \"node scraper.js\""
+    "scrape": "node rssScheduler.js",
+    "dev:full": "concurrently \"next dev\" \"node rssScheduler.js\""
   },
   "dependencies": {
     "axios": "^1.7.9",
