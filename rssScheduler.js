@@ -50,7 +50,64 @@
 
 
 
-import cron from "node-cron";
+// import cron from "node-cron";
+// import dotenv from "dotenv";
+// import { newsSources } from "./src/config/newsSources.js";
+// import { connectDB } from "./src/lib/db.js";
+// import { fetchNewsFromRSS } from "./src/services/rssFetcher.js";
+
+// dotenv.config();
+// console.log("📌 rssScheduler.js is starting...");
+
+// /**
+//  * Runs the scraping process
+//  */
+// async function runNewsScraping() {
+//   try {
+//     console.log("⏳ Scraping news started at", new Date().toLocaleTimeString());
+//     await connectDB();
+
+//     await Promise.all(newsSources.map(async (country) => {
+//       console.log(`🌍 Processing country: ${country.countryName}`);
+
+//       await Promise.all(country.sources.map(async (source) => {
+//         console.log(`📰 Processing source: ${source.name}`);
+
+//         await Promise.all(source.categories.map(async (category) => {
+//           console.log(`📑 Fetching ${category.name} category from ${source.name}...`);
+          
+//           try {
+//             await fetchNewsFromRSS(
+//               category.rss,
+//               country.countryCode,
+//               country.countryName,
+//               source.name,
+//               category.name
+//             );
+//           } catch (error) {
+//             console.error(`❌ Error in ${source.name} (${category.name}):`, error);
+//           }
+//         }));
+//       }));
+//     }));
+
+//     console.log("✅ Scraping completed successfully!");
+//   } catch (error) {
+//     console.error("❌ Critical error during news scraping:", error);
+//   }
+// }
+
+// // Run immediately once
+// runNewsScraping();
+
+// // Schedule scraping every 30 minutes
+// cron.schedule("*0 22 * * * *", runNewsScraping);
+
+// console.log("✅ Scraper scheduler started. Running every 30 minutes.");
+
+
+
+
 import dotenv from "dotenv";
 import { newsSources } from "./src/config/newsSources.js";
 import { connectDB } from "./src/lib/db.js";
@@ -59,9 +116,6 @@ import { fetchNewsFromRSS } from "./src/services/rssFetcher.js";
 dotenv.config();
 console.log("📌 rssScheduler.js is starting...");
 
-/**
- * Runs the scraping process
- */
 async function runNewsScraping() {
   try {
     console.log("⏳ Scraping news started at", new Date().toLocaleTimeString());
@@ -69,13 +123,10 @@ async function runNewsScraping() {
 
     await Promise.all(newsSources.map(async (country) => {
       console.log(`🌍 Processing country: ${country.countryName}`);
-
       await Promise.all(country.sources.map(async (source) => {
         console.log(`📰 Processing source: ${source.name}`);
-
         await Promise.all(source.categories.map(async (category) => {
           console.log(`📑 Fetching ${category.name} category from ${source.name}...`);
-          
           try {
             await fetchNewsFromRSS(
               category.rss,
@@ -97,10 +148,6 @@ async function runNewsScraping() {
   }
 }
 
-// Run immediately once
+// Run once when invoked (Vercel will call this function)
 runNewsScraping();
 
-// Schedule scraping every 30 minutes
-cron.schedule("*0 22 * * * *", runNewsScraping);
-
-console.log("✅ Scraper scheduler started. Running every 30 minutes.");
