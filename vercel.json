@@ -1,14 +1,8 @@
 {
-  "version": 2,
-  "functions": {
-    "rssScheduler.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "crons": [
     {
       "path": "/rssScheduler",
-      "schedule": "0 23 * * *"
+      "schedule": "0 23* * * *"
     }
   ]
 }
