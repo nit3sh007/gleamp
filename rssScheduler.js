@@ -103,6 +103,6 @@ async function runNewsScraping() {
 runNewsScraping();
 
 // Schedule scraping every 30 minutes
-cron.schedule("*0 20 * * * *", runNewsScraping);
+cron.schedule("*/1 * * * *", runNewsScraping);
 
 console.log("✅ Scraper scheduler started. Running every 30 minutes.");
