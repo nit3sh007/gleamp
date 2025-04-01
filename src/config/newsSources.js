@@ -70,7 +70,11 @@
 // ];
 
 
-// newsSources.js
+
+
+
+
+
 export const newsSources = [
   {
     countryCode: "USA",
@@ -127,6 +131,20 @@ export const newsSources = [
         categories: [
           { name: "Entertainment", rss: "https://www.chinanews.com.cn/rss/scroll-news.xml" },
           
+        ]
+      }, 
+
+    ]
+  },
+  {
+    countryCode: "ECU",
+    countryName: "Ecuador",
+    sources: [
+      {
+        name: "El Comercio",
+        categories: [
+         
+          { name: "Sports", rss: "https://eluniverso.opennemas.com/rss/" },
         ]
       }, 
 
