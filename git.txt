@@ -1,0 +1,36 @@
+# Initialize repository (only if not done before)
+git init
+
+# Add all files
+git add .
+
+# Commit files
+git commit -m "Initial commit"
+
+# Rename branch to main
+git branch -M main
+
+# Add remote (only once)
+git remote add origin https://github.com/nit3sh007/gleamp.git
+
+# Push to GitHub
+git push -u origin main
+
+
+📌 Pushing Changes After Modifications
+(Every time you make changes)
+
+# Check the status of modified files
+git status  
+
+# Add all changes
+git add .
+
+# Commit with a meaningful message
+git commit -m "Updated feature X"
+
+# Pull latest changes before pushing to avoid conflicts
+git pull origin main --rebase  
+
+# Push your changes
+git push origin main
