@@ -48,10 +48,6 @@
 //   }
 // };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> edb7fe010cdc6d4fac592bc44c283106d27ea0dd
 // import mongoose from 'mongoose';
 
 // export const connectDB = async () => {
@@ -71,11 +67,8 @@
 //   }
 // };
 
-<<<<<<< HEAD
 
 // src/lib/db.js
-=======
->>>>>>> edb7fe010cdc6d4fac592bc44c283106d27ea0dd
 import mongoose from 'mongoose';
 
 let isConnected = false;
