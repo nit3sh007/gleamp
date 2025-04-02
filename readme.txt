@@ -26,8 +26,11 @@ mapview smoothness improved
 added multi screen responsiveness
 created search hearder ,fixed navbar,
 
+latest improved ui, database, fast, scrapping,cron jobs, 
+deployed in vercal
 
 
+https://gleamp.vercel.app
 
 
 
@@ -40,3 +43,6 @@ npm run customdev
 gleamp
 
 zXT93iZ3s9Lm9gb4
+
+
+npm run build 
